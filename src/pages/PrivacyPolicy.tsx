@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Shield, Eye, Lock, Database, UserCheck, Cookie, FileText, ArrowLeft, CheckCircle, Clock, Server, Share2, Trash2 } from 'lucide-react'
+import { Shield, Eye, Lock, Database, UserCheck, Cookie, FileText, ArrowLeft, CheckCircle, Clock, Server, Share2 } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 export default function PrivacyPolicy() {
