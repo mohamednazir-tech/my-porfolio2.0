@@ -38,6 +38,12 @@ function Scene3D({ wireframe }: { wireframe: boolean }) {
   )
 }
 
+declare global {
+  interface Window {
+    __PAGE?: string;
+  }
+}
+
 export default function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -48,9 +54,16 @@ export default function App() {
   useEffect(() => {
     // Check current path and set page accordingly
     const path = window.location.pathname
-    if (path === '/pages/privacy') {
+    const basePath = '/my-porfolio2.0'
+    
+    // Check for window.__PAGE first (for HTML files)
+    if (window.__PAGE === 'privacy') {
       setCurrentPage('privacy')
-    } else if (path === '/pages/terms') {
+    } else if (window.__PAGE === 'terms') {
+      setCurrentPage('terms')
+    } else if (path === `${basePath}/pages/privacy` || path === '/pages/privacy') {
+      setCurrentPage('privacy')
+    } else if (path === `${basePath}/pages/terms` || path === '/pages/terms') {
       setCurrentPage('terms')
     } else {
       setCurrentPage('home')
