@@ -226,8 +226,8 @@ export default function App() {
         <div className="flex flex-col space-y-4">
           {[
             { icon: Github, href: '#', label: 'GitHub' },
-            { icon: Linkedin, href: '#', label: 'LinkedIn' },
-            { icon: Mail, href: '#', label: 'Email' }
+            { icon: Linkedin, href: 'https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android', label: 'LinkedIn' },
+            { icon: Mail, href: 'mailto:mohamednazirm686@gmail.com', label: 'Email' },
           ].map((social, index) => (
             <motion.a
               key={social.label}

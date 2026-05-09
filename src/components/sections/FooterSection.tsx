@@ -40,8 +40,8 @@ export default function FooterSection() {
 
   const socialLinks = [
     { icon: Github, href: "https://github.com", label: "GitHub", color: "from-gray-600 to-gray-800" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn", color: "from-blue-500 to-blue-600" },
-    { icon: Mail, href: "mailto:contact@example.com", label: "Email", color: "from-red-500 to-orange-500" }
+    { icon: Linkedin, href: "https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android", label: "LinkedIn", color: "from-blue-500 to-blue-600" },
+    { icon: Mail, href: "mailto:mohamednazirm686@gmail.com", label: "Email", color: "from-red-500 to-orange-500" },
   ]
 
   const footerLinks = [
@@ -152,7 +152,7 @@ export default function FooterSection() {
               <div className="space-y-2 mb-4 md:mb-6">
                 <div className="flex items-center gap-2 text-gray-400 text-xs md:text-sm">
                   <MapPin className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />
-                  <span>San Francisco, CA</span>
+                  <span>Remote</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-400 text-xs md:text-sm">
                   <Phone className="w-3 h-3 md:w-4 md:h-4 text-cyan-400" />

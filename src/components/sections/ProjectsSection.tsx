@@ -158,6 +158,15 @@ export default function ProjectsSection() {
                 alt={project.title}
                 className="w-full h-full object-cover mt-6 sm:mt-8"
                 loading="lazy"
+                onError={(e) => {
+                  console.error('Image failed to load:', project.image);
+                  console.error('Project:', project.title);
+                  // Try fallback
+                  e.currentTarget.src = 'https://via.placeholder.com/300x200/1a1a1a/00d4ff?text=' + encodeURIComponent(project.title);
+                }}
+                onLoad={() => {
+                  console.log('Image loaded successfully:', project.image);
+                }}
               />
             </div>
           )}
@@ -224,28 +233,50 @@ export default function ProjectsSection() {
 
           {/* Action Buttons */}
           <div className="flex gap-2 sm:gap-3 mt-auto">
-            <motion.a
-              href={project.liveUrl}
-              className="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-white font-medium text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 hover:shadow-lg transition-all"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
-              Live Demo
-            </motion.a>
+            {(() => {
+              const hasLiveDemo = project.liveUrl && project.liveUrl !== "#";
+              return (
+                <motion.a
+                  href={hasLiveDemo ? project.liveUrl : undefined}
+                  className="flex-1 px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg text-white font-medium text-xs sm:text-sm flex items-center justify-center gap-1 sm:gap-2 hover:shadow-lg transition-all pointer-events-auto z-50 relative"
+                  whileHover={hasLiveDemo ? { scale: 1.05 } : {}}
+                  whileTap={hasLiveDemo ? { scale: 0.95 } : {}}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    if (!hasLiveDemo) {
+                      e.preventDefault();
+                      alert("Live demo not available for this project");
+                    }
+                  }}
+                >
+                  <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
+                  Live Demo
+                </motion.a>
+              );
+            })()}
             
-            <motion.a
-              href={project.githubUrl}
-              className="px-3 sm:px-4 py-2 sm:py-2.5 glass-card rounded-lg text-white font-medium text-xs sm:text-sm hover:bg-white/20 transition-all"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Github className="w-3 h-3 sm:w-4 sm:h-4" />
-            </motion.a>
+            {(() => {
+              const hasGithub = project.githubUrl && project.githubUrl !== "#";
+              return (
+                <motion.a
+                  href={hasGithub ? project.githubUrl : undefined}
+                  className="px-3 sm:px-4 py-2 sm:py-2.5 glass-card rounded-lg text-white font-medium text-xs sm:text-sm hover:bg-white/20 transition-all pointer-events-auto z-50 relative"
+                  whileHover={hasGithub ? { scale: 1.05 } : {}}
+                  whileTap={hasGithub ? { scale: 0.95 } : {}}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    if (!hasGithub) {
+                      e.preventDefault();
+                      alert("GitHub repository not available for this project");
+                    }
+                  }}
+                >
+                  <Github className="w-3 h-3 sm:w-4 sm:h-4" />
+                </motion.a>
+              );
+            })()}
           </div>
         </div>
       </div>

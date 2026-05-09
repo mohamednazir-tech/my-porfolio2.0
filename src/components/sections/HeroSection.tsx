@@ -251,7 +251,7 @@ export default function HeroSection() {
         >
           {[
             { icon: Github, href: "https://github.com", label: "GitHub" },
-            { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+            { icon: Linkedin, href: "https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android", label: "LinkedIn" },
             { icon: MessageCircle, href: "https://wa.me/916374034451", label: "WhatsApp" },
           ].map((social, index) => (
             <motion.a

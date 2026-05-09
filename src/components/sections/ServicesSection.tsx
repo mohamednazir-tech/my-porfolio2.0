@@ -300,8 +300,8 @@ export default function ServicesSection() {
           className="mt-12 md:mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 px-4"
         >
           {[
-            { value: "50+", label: "Projects Delivered", icon: Code },
-            { value: "40+", label: "Happy Clients", icon: Rocket },
+            // { value: "50+", label: "Projects Delivered", icon: Code },
+            // { value: "40+", label: "Happy Clients", icon: Rocket },
             { value: "98%", label: "Client Satisfaction", icon: Shield },
             { value: "24/7", label: "Support Available", icon: Zap },
           ].map((stat, i) => (

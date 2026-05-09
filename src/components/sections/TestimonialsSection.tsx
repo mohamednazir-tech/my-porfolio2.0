@@ -11,7 +11,7 @@ const testimonials = [
     content: "Exceptional work! Our new e-commerce platform exceeded all expectations. The attention to detail and innovative solutions transformed our business operations completely.",
     rating: 5,
     project: "E-Commerce Platform",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     twitter: "#",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop"
   },
@@ -22,7 +22,7 @@ const testimonials = [
     content: "The fitness app development was flawless. User engagement increased by 300% within the first month. The app received 5-star ratings across all platforms and stores.",
     rating: 5,
     project: "Fitness Tracking App",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     twitter: "#",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop"
   },
@@ -33,7 +33,7 @@ const testimonials = [
     content: "Outstanding dashboard design and implementation. Real-time analytics have never been more beautiful and intuitive. The team's technical expertise is remarkable.",
     rating: 5,
     project: "SaaS Dashboard",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     twitter: "#",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop"
   },
@@ -44,7 +44,7 @@ const testimonials = [
     content: "Brilliant mobile app development! The social features and real-time messaging work flawlessly. Our user base has grown 200% since launch. Highly recommended!",
     rating: 5,
     project: "Social Media App",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     twitter: "#",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop"
   },
@@ -55,7 +55,7 @@ const testimonials = [
     content: "The landing page conversion rate increased by 250% after the redesign. Perfect blend of aesthetics and functionality. We couldn't be happier with the results.",
     rating: 5,
     project: "Marketing Landing Page",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android",
     twitter: "#",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop"
   }
@@ -427,9 +427,9 @@ export default function TestimonialsSection() {
           className="mt-12 md:mt-16 grid grid-cols-2 md:flex md:justify-center gap-3 md:gap-8 px-4"
         >
           {[
-            { value: "50+", label: "Happy Clients", icon: User },
-            { value: "98%", label: "Satisfaction Rate", icon: ThumbsUp },
-            { value: "40+", label: "Projects Delivered", icon: Star },
+            // { value: "50+", label: "Happy Clients", icon: User },
+            // { value: "98%", label: "Satisfaction Rate", icon: ThumbsUp },
+            // { value: "40+", label: "Projects Delivered", icon: Star },
           ].map((stat, i) => (
             <motion.div
               key={i}

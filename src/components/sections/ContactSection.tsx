@@ -85,9 +85,9 @@ export default function ContactSection() {
 
   const socialLinks = [
     { icon: Github, href: "https://github.com", label: "GitHub", color: "from-gray-600 to-gray-800" },
-    { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn", color: "from-blue-500 to-blue-600" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android", label: "LinkedIn", color: "from-blue-500 to-blue-600" },
     { icon: MessageCircle, href: "https://wa.me/15551234567", label: "WhatsApp", color: "from-green-500 to-green-600" },
-    { icon: Mail, href: "mailto:contact@example.com", label: "Email", color: "from-red-500 to-orange-500" }
+    { icon: Mail, href: "mailto:mohamednazirm686@gmail.com", label: "Email", color: "from-red-500 to-orange-500" },
   ]
 
   return (
@@ -336,7 +336,7 @@ export default function ContactSection() {
                   </div>
                   <div className="flex-1">
                     <p className="text-gray-400 text-xs md:text-sm">Location</p>
-                    <p className="text-white font-medium text-sm md:text-base">San Francisco, CA</p>
+                    <p className="text-white font-medium text-sm md:text-base">Remote</p>
                   </div>
                 </div>
               </div>

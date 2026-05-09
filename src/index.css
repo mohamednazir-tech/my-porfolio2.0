@@ -10,7 +10,7 @@
   }
   
   body {
-    @apply bg-dark text-white font-inter;
+    @apply bg-dark text-white font-sans;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
   }
