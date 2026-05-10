@@ -105,7 +105,7 @@ export default function App() {
       <WireframeToggle wireframe={wireframe} setWireframe={setWireframe} />
 
       {/* Navigation - Only show on home page */}
-      {location.pathname === '/' && (
+      {!location.hash.includes('privacy') && !location.hash.includes('terms') && (
         <motion.nav 
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -210,10 +210,10 @@ export default function App() {
       </main>
 
       {/* Footer - Only show on home page */}
-      {location.pathname === '/' && <FooterSection />}
+      {!location.hash.includes('privacy') && !location.hash.includes('terms') && <FooterSection />}
 
       {/* Floating Social Icons - Only show on home page */}
-      {location.pathname === '/' && (
+      {!location.hash.includes('privacy') && !location.hash.includes('terms') && (
         <motion.div 
           className="fixed right-8 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block"
           initial={{ x: 100, opacity: 0 }}
