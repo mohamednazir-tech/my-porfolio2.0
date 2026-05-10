@@ -34,7 +34,7 @@ const projects = [
   {
     title: "Kadambam Builders wedsite",
     description: "The platform combines professional branding, secure content management, and dynamic business tools to deliver a scalable digital solution for customer engagement and lead generation.",
-    image: `${BASE_URL}Screenshot 2026-05-08 000907.png`,
+    image: `${BASE_URL}kadambam-builders.png`,
     technologies: ["Vite","React 18","TypeScript", "TailwindCSS", "JWT","Supabase"],
     type: "web",
     liveUrl: "https://kadambambuilders.com/",
@@ -58,7 +58,7 @@ const projects = [
   {
     title: "Milestone Construction Wedsite",
     description: "Smooth animations, lazy loading, and optimized for fast loading and great user experience.",
-    image: `${BASE_URL}Screenshot 2026-05-08 002122.png`,
+    image: `${BASE_URL}milestone-construction.png`,
     technologies: ["HTML5", "CSS3", "JavaScript (ES6+)", "3D Graphics & Animation"],
     type: "web",
     liveUrl: "https://mohamednazir-tech.github.io/construction/",
