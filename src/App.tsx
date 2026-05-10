@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Stars } from '@react-three/drei'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -49,26 +50,7 @@ export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [wireframe, setWireframe] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
-  const [currentPage, setCurrentPage] = useState('home')
-
-  useEffect(() => {
-    // Check current path and set page accordingly
-    const path = window.location.pathname
-    const basePath = '/my-porfolio2.0'
-    
-    // Check for window.__PAGE first (for HTML files)
-    if (window.__PAGE === 'privacy') {
-      setCurrentPage('privacy')
-    } else if (window.__PAGE === 'terms') {
-      setCurrentPage('terms')
-    } else if (path === `${basePath}/pages/privacy` || path === '/pages/privacy') {
-      setCurrentPage('privacy')
-    } else if (path === `${basePath}/pages/terms` || path === '/pages/terms') {
-      setCurrentPage('terms')
-    } else {
-      setCurrentPage('home')
-    }
-  }, [])
+  const location = useLocation()
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 3000)
@@ -123,7 +105,7 @@ export default function App() {
       <WireframeToggle wireframe={wireframe} setWireframe={setWireframe} />
 
       {/* Navigation - Only show on home page */}
-      {currentPage === 'home' && (
+      {location.pathname === '/' && (
         <motion.nav 
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -211,25 +193,27 @@ export default function App() {
 
       {/* Main Content */}
       <main className="relative z-10">
-        {currentPage === 'home' && (
-          <>
-            <HeroSection />
-            <ServicesSection />
-            <SkillsSection />
-            <ProjectsSection />
-            <TestimonialsSection />
-            <ContactSection />
-          </>
-        )}
-        {currentPage === 'privacy' && <PrivacyPolicy />}
-        {currentPage === 'terms' && <TermsOfService />}
+        <Routes>
+          <Route path="/" element={
+            <>
+              <HeroSection />
+              <ServicesSection />
+              <SkillsSection />
+              <ProjectsSection />
+              <TestimonialsSection />
+              <ContactSection />
+            </>
+          } />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfService />} />
+        </Routes>
       </main>
 
       {/* Footer - Only show on home page */}
-      {currentPage === 'home' && <FooterSection />}
+      {location.pathname === '/' && <FooterSection />}
 
       {/* Floating Social Icons - Only show on home page */}
-      {currentPage === 'home' && (
+      {location.pathname === '/' && (
         <motion.div 
           className="fixed right-8 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block"
           initial={{ x: 100, opacity: 0 }}
