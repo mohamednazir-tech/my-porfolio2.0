@@ -26,52 +26,30 @@ export default function ContactSection() {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus('idle')
     
-    // Validate form
-    if (!formData.name || !formData.email || !formData.message) {
-      setSubmitStatus('error')
-      setTimeout(() => {
-        setSubmitStatus('idle')
-      }, 3000)
-      setIsSubmitting(false)
-      return
-    }
-    
-    // Create email content
-    const subject = encodeURIComponent(`Portfolio Contact: ${formData.name}`)
+    const subject = encodeURIComponent(
+      `Portfolio Contact: ${formData.name}` 
+    )
+
     const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
+      `Name: ${formData.name}\n\n` +
       `Email: ${formData.email}\n\n` +
       `Message:\n${formData.message}`
     )
+
+    window.location.href =
+      `mailto:mohamednazirm686@gmail.com?subject=${subject}&body=${body}`
+
+    // Show success message and clear form
+    setSubmitStatus('success')
+    setFormData({ name: '', email: '', message: '' })
     
-    // Open email client with pre-filled content
-    const mailtoLink = `mailto:mohamednazirm686@gmail.com?subject=${subject}&body=${body}`
-    
-    try {
-      window.location.href = mailtoLink
-      
-      // Show success message
-      setSubmitStatus('success')
-      setFormData({ name: '', email: '', message: '' })
-      
-      // Reset success message after 3 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle')
-      }, 3000)
-    } catch (error) {
-      console.error('Error opening email client:', error)
-      setSubmitStatus('error')
-      setTimeout(() => {
-        setSubmitStatus('idle')
-      }, 3000)
-    }
-    
-    setIsSubmitting(false)
+    // Reset success message after 3 seconds
+    setTimeout(() => {
+      setSubmitStatus('idle')
+    }, 3000)
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
