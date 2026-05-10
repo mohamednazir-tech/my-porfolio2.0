@@ -31,11 +31,31 @@ export default function ContactSection() {
     setIsSubmitting(true)
     setSubmitStatus('idle')
     
-    // Simulate form submission with validation
-    await new Promise(resolve => setTimeout(resolve, 2000))
+    // Validate form
+    if (!formData.name || !formData.email || !formData.message) {
+      setSubmitStatus('error')
+      setTimeout(() => {
+        setSubmitStatus('idle')
+      }, 3000)
+      setIsSubmitting(false)
+      return
+    }
     
-    // Simulate success (you can replace with actual API call)
-    if (formData.name && formData.email && formData.message) {
+    // Create email content
+    const subject = encodeURIComponent(`Portfolio Contact: ${formData.name}`)
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Message:\n${formData.message}`
+    )
+    
+    // Open email client with pre-filled content
+    const mailtoLink = `mailto:mohamednazirm686@gmail.com?subject=${subject}&body=${body}`
+    
+    try {
+      window.location.href = mailtoLink
+      
+      // Show success message
       setSubmitStatus('success')
       setFormData({ name: '', email: '', message: '' })
       
@@ -43,7 +63,8 @@ export default function ContactSection() {
       setTimeout(() => {
         setSubmitStatus('idle')
       }, 3000)
-    } else {
+    } catch (error) {
+      console.error('Error opening email client:', error)
       setSubmitStatus('error')
       setTimeout(() => {
         setSubmitStatus('idle')
