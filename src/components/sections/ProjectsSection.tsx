@@ -3,6 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ExternalLink, Github, Smartphone, Monitor, Globe, ArrowRight, Star, Filter } from 'lucide-react'
 
+// Helper function to get correct base path for images
+const getBasePath = () => {
+  return process.env.NODE_ENV === 'production' ? '/my-porfolio2.0' : ''
+}
+
 const projects = [
   {
     title: "E-Commerce Platform",
@@ -31,7 +36,7 @@ const projects = [
   {
     title: "Kadambam Builders wedsite",
     description: "The platform combines professional branding, secure content management, and dynamic business tools to deliver a scalable digital solution for customer engagement and lead generation.",
-    image: "/Screenshot 2026-05-08 000907.png",
+    image: `${getBasePath()}/Screenshot 2026-05-08 000907.png`,
     technologies: ["Vite","React 18","TypeScript", "TailwindCSS", "JWT","Supabase"],
     type: "web",
     liveUrl: "https://kadambambuilders.com/",
@@ -55,7 +60,7 @@ const projects = [
   {
     title: "Milestone Construction Wedsite",
     description: "Smooth animations, lazy loading, and optimized for fast loading and great user experience.",
-    image: "/Screenshot 2026-05-08 002122.png",
+    image: `${getBasePath()}/Screenshot 2026-05-08 002122.png`,
     technologies: ["HTML5", "CSS3", "JavaScript (ES6+)", "3D Graphics & Animation"],
     type: "web",
     liveUrl: "https://mohamednazir-tech.github.io/construction/",
