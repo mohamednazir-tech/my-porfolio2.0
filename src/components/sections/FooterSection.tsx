@@ -59,8 +59,8 @@ export default function FooterSection() {
       links: [
         { name: "Testimonials", href: "#testimonials" },
         { name: "Contact", href: "#contact" },
-        { name: "Privacy Policy", href: "/pages/privacy" },
-        { name: "Terms of Service", href: "/pages/terms" }
+        { name: "Privacy Policy", href: "/pages/privacy.html" },
+        { name: "Terms of Service", href: "/pages/terms.html" }
       ]
     }
   ]
