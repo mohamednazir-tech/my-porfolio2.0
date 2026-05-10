@@ -13,6 +13,9 @@
     @apply bg-dark text-white font-sans;
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
   }
 
   html {
