@@ -52,6 +52,8 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('hero')
   const location = useLocation()
 
+  const isLegalPage = location.hash.includes('privacy') || location.hash.includes('terms')
+
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 3000)
     return () => clearTimeout(timer)
@@ -104,8 +106,8 @@ export default function App() {
       {/* Wireframe Toggle */}
       <WireframeToggle wireframe={wireframe} setWireframe={setWireframe} />
 
-      {/* Navigation - Only show on home page */}
-      {!location.hash.includes('privacy') && !location.hash.includes('terms') && (
+      {/* Navigation - Show on home page */}
+      {!isLegalPage && (
         <motion.nav 
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -209,11 +211,11 @@ export default function App() {
         </Routes>
       </main>
 
-      {/* Footer - Only show on home page */}
-      {!location.hash.includes('privacy') && !location.hash.includes('terms') && <FooterSection />}
+      {/* Footer - Show on home page */}
+      {!isLegalPage && <FooterSection />}
 
-      {/* Floating Social Icons - Only show on home page */}
-      {!location.hash.includes('privacy') && !location.hash.includes('terms') && (
+      {/* Floating Social Icons - Show on home page */}
+      {!isLegalPage && (
         <motion.div 
           className="fixed right-8 top-1/2 transform -translate-y-1/2 z-40 hidden lg:block"
           initial={{ x: 100, opacity: 0 }}
