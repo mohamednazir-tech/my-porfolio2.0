@@ -83,13 +83,31 @@ export default function App() {
 
   // Smooth scroll to section
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      })
+    console.log('Scrolling to:', sectionId)
+    
+    // Try multiple times with delays in case components are still mounting
+    const attemptScroll = (attempts = 0) => {
+      const element = document.getElementById(sectionId)
+      console.log('Attempt', attempts + 1, '- Element found:', element)
+      
+      if (element) {
+        console.log('Scrolling to element:', element)
+        element.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        })
+      } else if (attempts < 3) {
+        console.log('Retrying in 100ms...')
+        setTimeout(() => attemptScroll(attempts + 1), 100)
+      } else {
+        console.error('Section not found after 3 attempts:', sectionId)
+        // Log all available sections for debugging
+        const allSections = document.querySelectorAll('section[id]')
+        console.log('Available sections:', Array.from(allSections).map(s => s.id))
+      }
     }
+    
+    attemptScroll()
   }
 
   const navItems = [
