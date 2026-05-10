@@ -44,26 +44,30 @@ export default function FooterSection() {
     { icon: Mail, href: "mailto:mohamednazirm686@gmail.com", label: "Email", color: "from-red-500 to-orange-500" },
   ]
 
-  const footerLinks = [
-    {
-      title: "Navigation",
-      links: [
-        { name: "Home", href: "#hero" },
-        { name: "Skills", href: "#skills" },
-        { name: "Services", href: "#services" },
-        { name: "Projects", href: "#projects" }
-      ]
-    },
-    {
-      title: "Resources",
-      links: [
-        { name: "Testimonials", href: "#testimonials" },
-        { name: "Contact", href: "#contact" },
-        { name: "Privacy Policy", href: "#/privacy" },
-        { name: "Terms of Service", href: "#/terms" }
-      ]
-    }
-  ]
+  const navigationLinks = [
+  { name: "Home", href: "#hero" },
+  { name: "Skills", href: "#skills" },
+  { name: "Services", href: "#services" },
+  { name: "Projects", href: "#projects" },
+  { name: "Testimonials", href: "#testimonials" },
+  { name: "Contact", href: "#contact" },
+];
+
+const legalLinks = [
+  { name: "Privacy Policy", href: "#/privacy" },
+  { name: "Terms of Service", href: "#/terms" },
+];
+
+const footerLinks = [
+  {
+    title: "Navigation",
+    links: navigationLinks
+  },
+  {
+    title: "Legal",
+    links: legalLinks
+  }
+]
 
   const containerVariants = {
     hidden: { opacity: 0 },
