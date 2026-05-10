@@ -261,7 +261,7 @@ export default function App() {
       </main>
 
       {/* Footer - Show on home page */}
-      {isHomePage && <FooterSection />}
+      {isHomePage && <FooterSection scrollToSection={scrollToSection} />}
 
       {/* Floating Social Icons - Show on home page */}
       {isHomePage && (

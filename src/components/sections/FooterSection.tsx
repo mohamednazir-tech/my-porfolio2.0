@@ -3,7 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Github, Linkedin, Mail, Heart, ArrowUp, Code, MapPin, Phone, MessageCircle } from 'lucide-react'
 
-export default function FooterSection() {
+interface FooterSectionProps {
+  scrollToSection?: (sectionId: string) => void
+}
+
+export default function FooterSection({ scrollToSection }: FooterSectionProps) {
   const [isMobile, setIsMobile] = useState(false)
   const [showScrollTop, setShowScrollTop] = useState(false)
   const [hoveredSocial, setHoveredSocial] = useState<number | null>(null)
@@ -217,13 +221,25 @@ const footerLinks = [
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.05 + linkIndex * 0.05 }}
                     >
-                      <a
-                        href={link.href}
-                        className="text-gray-400 hover:text-cyan-400 transition-colors text-xs md:text-sm flex items-center gap-1 group"
-                      >
-                        <span className="group-hover:translate-x-1 transition-transform">→</span>
-                        {link.name}
-                      </a>
+                      {link.href.startsWith('#/') ? (
+                        // Legal page links - use anchor
+                        <a
+                          href={link.href}
+                          className="text-gray-400 hover:text-cyan-400 transition-colors text-xs md:text-sm flex items-center gap-1 group"
+                        >
+                          <span className="group-hover:translate-x-1 transition-transform">→</span>
+                          {link.name}
+                        </a>
+                      ) : (
+                        // Section navigation links - use button with scroll function
+                        <button
+                          onClick={() => scrollToSection?.(link.href.replace('#', ''))}
+                          className="text-gray-400 hover:text-cyan-400 transition-colors text-xs md:text-sm flex items-center gap-1 group bg-transparent border-none cursor-pointer text-left"
+                        >
+                          <span className="group-hover:translate-x-1 transition-transform">→</span>
+                          {link.name}
+                        </button>
+                      )}
                     </motion.li>
                   ))}
                 </ul>
