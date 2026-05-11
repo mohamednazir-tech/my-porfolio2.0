@@ -11,9 +11,9 @@ const testimonials = [
     content: "Exceptional work! Our new e-commerce platform exceeded all expectations. The attention to detail and innovative solutions transformed our business operations completely.",
     rating: 5,
     project: "3D wesite",
-    phone: "+91 9600551392",
-    whatsapp: "+91 9600551392",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&auto=format&face=center&mask=ellipse"
+    phone: "+1234567890",
+    whatsapp: "+1234567890",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop"
   },
   {
     name: "Mohamed Yazer",
@@ -22,9 +22,9 @@ const testimonials = [
     content: "The fitness app development was flawless. User engagement increased by 300% within the first month. The app received 5-star ratings across all platforms and stores.",
     rating: 5,
     project: "bussiness/corporate website",
-    phone: "+919597987005",
-    whatsapp: "+919597987005",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&auto=format&face=center&mask=ellipse"
+    phone: "+1234567890",
+    whatsapp: "+1234567890",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop"
   },
   {
     name: "Emily Rodriguez",
@@ -35,7 +35,7 @@ const testimonials = [
     project: "SaaS Dashboard",
     phone: "+1234567890",
     whatsapp: "+1234567890",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&auto=format&face=center&mask=ellipse"
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop"
   },
   {
     name: "David Kim",
@@ -46,18 +46,18 @@ const testimonials = [
     project: "Social Media App",
     phone: "+1234567890",
     whatsapp: "+1234567890",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&auto=format&face=center&mask=ellipse"
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop"
   },
   {
     name: "Lisa Anderson",
     role: "Marketing Director",
     company: "GrowthHub",
-    content: "The landing page conversion rate increased by 250% after the redesign. Perfect blend of aesthetics and functionality. We couldn't be happier with the results.",
+    content: "The landing page conversion rate increased by 250% after redesign. Perfect blend of aesthetics and functionality. We couldn't be happier with the results.",
     rating: 5,
     project: "Marketing Landing Page",
     phone: "+1234567890",
     whatsapp: "+1234567890",
-    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&auto=format&face=center&mask=ellipse"
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop"
   }
 ]
 
