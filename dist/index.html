@@ -40,6 +40,7 @@
     <meta name="msapplication-TileColor" content="#0d4ff" />
     <meta name="msapplication-navbutton-color" content="#0d4ff" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Nazir Portfolio" />
     
@@ -200,9 +201,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/my-porfolio2.0/site.webmanifest" />
     
-    <!-- Preload Critical Assets -->
-    <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" crossorigin />
-    
     <!-- DNS Prefetch -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
@@ -242,7 +240,7 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').then(registration => {
+          navigator.serviceWorker.register('/my-porfolio2.0/sw.js').then(registration => {
             console.log('SW registered: ', registration);
           }).catch(registrationError => {
             console.log('SW registration failed: ', registrationError);
