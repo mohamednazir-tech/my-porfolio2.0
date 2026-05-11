@@ -1,15 +1,16 @@
 {
-  "name": "freelancer-portfolio-3d",
+  "name": "my-porfolio2.0",
+  "private": true,
   "version": "1.0.0",
   "description": "Modern freelancer portfolio with 3D elements",
   "type": "module",
+  "homepage": "https://mohamednazir-tech.github.io/my-porfolio2.0/",
   "main": "index.js",
   "scripts": {
-    "dev": "npx vite",
-    "build": "npx vite build",
-    "preview": "npx vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist --branch main --dest ."
   },
   "dependencies": {
     "@react-three/drei": "^9.88.17",
