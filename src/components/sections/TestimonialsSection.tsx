@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { ChevronLeft, ChevronRight, Star, Quote, Mail, MessageSquare, User, ThumbsUp } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Star, Quote, Phone, MessageCircle, User, ThumbsUp } from 'lucide-react'
 
 const testimonials = [
   {
@@ -11,8 +11,8 @@ const testimonials = [
     content: "Exceptional work! Our new e-commerce platform exceeded all expectations. The attention to detail and innovative solutions transformed our business operations completely.",
     rating: 5,
     project: "E-Commerce Platform",
-    linkedin: "https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-    twitter: "#",
+    phone: "+1234567890",
+    whatsapp: "+1234567890",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop"
   },
   {
@@ -22,8 +22,8 @@ const testimonials = [
     content: "The fitness app development was flawless. User engagement increased by 300% within the first month. The app received 5-star ratings across all platforms and stores.",
     rating: 5,
     project: "Fitness Tracking App",
-    linkedin: "mailto:mohamednazirm686@gmail.com",
-    twitter: "https://wa.me/918123456789",
+    phone: "+1234567890",
+    whatsapp: "+1234567890",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop"
   },
   {
@@ -33,8 +33,8 @@ const testimonials = [
     content: "Outstanding dashboard design and implementation. Real-time analytics have never been more beautiful and intuitive. The team's technical expertise is remarkable.",
     rating: 5,
     project: "SaaS Dashboard",
-    linkedin: "mailto:mohamednazirm686@gmail.com",
-    twitter: "https://wa.me/918123456789",
+    phone: "+1234567890",
+    whatsapp: "+1234567890",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop"
   },
   {
@@ -44,8 +44,8 @@ const testimonials = [
     content: "Brilliant mobile app development! The social features and real-time messaging work flawlessly. Our user base has grown 200% since launch. Highly recommended!",
     rating: 5,
     project: "Social Media App",
-    linkedin: "mailto:mohamednazirm686@gmail.com",
-    twitter: "https://wa.me/918123456789",
+    phone: "+1234567890",
+    whatsapp: "+1234567890",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop"
   },
   {
@@ -55,8 +55,8 @@ const testimonials = [
     content: "The landing page conversion rate increased by 250% after the redesign. Perfect blend of aesthetics and functionality. We couldn't be happier with the results.",
     rating: 5,
     project: "Marketing Landing Page",
-    linkedin: "mailto:mohamednazirm686@gmail.com",
-    twitter: "https://wa.me/918123456789",
+    phone: "+1234567890",
+    whatsapp: "+1234567890",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop"
   }
 ]
@@ -209,24 +209,24 @@ export default function TestimonialsSection() {
         {/* Social links */}
         <div className="flex gap-1 sm:gap-2">
           <motion.a
-            href={testimonial.linkedin}
+            href={`tel:${testimonial.phone}`}
             className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-cyan-500/20 transition-colors"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 hover:text-cyan-400 transition-colors" />
+            <Phone className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 hover:text-cyan-400 transition-colors" />
           </motion.a>
           <motion.a
-            href={testimonial.twitter}
+            href={`https://wa.me/${testimonial.whatsapp.replace('+', '')}`}
             className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-cyan-500/20 transition-colors"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 hover:text-cyan-400 transition-colors" />
+            <MessageCircle className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 hover:text-cyan-400 transition-colors" />
           </motion.a>
         </div>
       </div>
