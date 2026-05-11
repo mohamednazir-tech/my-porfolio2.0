@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     
+    <!-- Base URL for GitHub Pages -->
+    <base href="/my-porfolio2.0/" />
+    
     <!-- Primary SEO Meta Tags -->
     <title>Nazir - Freelance Web Developer & 3D Designer | Portfolio</title>
     <meta name="description" content="Nazir - Expert freelance web developer and 3D designer specializing in React, TypeScript, and modern web technologies. Professional portfolio showcasing innovative web development projects and 3D experiences." />
@@ -194,12 +197,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/my-porfolio2.0/site.webmanifest" />
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json" />
     
     <!-- DNS Prefetch -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
@@ -236,17 +235,36 @@
       });
     </script>
     
-    <!-- Service Worker Registration (For PWA) -->
+    <!-- Service Worker Registration (For PWA) - GitHub Pages Compatible -->
     <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/my-porfolio2.0/sw.js').then(registration => {
-            console.log('SW registered: ', registration);
-          }).catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
+      (function() {
+        // Check if we're on GitHub Pages
+        const isGitHubPages = window.location.hostname.includes('github.io');
+        const basePath = '';
+        
+        if ('serviceWorker' in navigator && isGitHubPages) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register(`${basePath}/sw.js`)
+              .then(registration => {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+              })
+              .catch(error => {
+                console.log('ServiceWorker registration failed: ', error);
+              });
           });
-        });
-      }
+        } else if ('serviceWorker' in navigator) {
+          // Development fallback
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+              .then(registration => {
+                console.log('Dev SW registered: ', registration);
+              })
+              .catch(error => {
+                console.log('Dev SW registration failed: ', error);
+              });
+          });
+        }
+      })();
     </script>
   </body>
 </html>
