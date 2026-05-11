@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { ChevronLeft, ChevronRight, Star, Quote, Linkedin, Twitter, User, ThumbsUp } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Star, Quote, Mail, MessageSquare, User, ThumbsUp } from 'lucide-react'
 
 const testimonials = [
   {
@@ -22,8 +22,8 @@ const testimonials = [
     content: "The fitness app development was flawless. User engagement increased by 300% within the first month. The app received 5-star ratings across all platforms and stores.",
     rating: 5,
     project: "Fitness Tracking App",
-    linkedin: "https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-    twitter: "#",
+    linkedin: "mailto:mohamednazirm686@gmail.com",
+    twitter: "https://wa.me/918123456789",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop"
   },
   {
@@ -33,8 +33,8 @@ const testimonials = [
     content: "Outstanding dashboard design and implementation. Real-time analytics have never been more beautiful and intuitive. The team's technical expertise is remarkable.",
     rating: 5,
     project: "SaaS Dashboard",
-    linkedin: "https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-    twitter: "#",
+    linkedin: "mailto:mohamednazirm686@gmail.com",
+    twitter: "https://wa.me/918123456789",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop"
   },
   {
@@ -44,8 +44,8 @@ const testimonials = [
     content: "Brilliant mobile app development! The social features and real-time messaging work flawlessly. Our user base has grown 200% since launch. Highly recommended!",
     rating: 5,
     project: "Social Media App",
-    linkedin: "https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-    twitter: "#",
+    linkedin: "mailto:mohamednazirm686@gmail.com",
+    twitter: "https://wa.me/918123456789",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop"
   },
   {
@@ -55,8 +55,8 @@ const testimonials = [
     content: "The landing page conversion rate increased by 250% after the redesign. Perfect blend of aesthetics and functionality. We couldn't be happier with the results.",
     rating: 5,
     project: "Marketing Landing Page",
-    linkedin: "https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android",
-    twitter: "#",
+    linkedin: "mailto:mohamednazirm686@gmail.com",
+    twitter: "https://wa.me/918123456789",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop"
   }
 ]
@@ -216,7 +216,7 @@ export default function TestimonialsSection() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Linkedin className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 hover:text-cyan-400 transition-colors" />
+            <Mail className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 hover:text-cyan-400 transition-colors" />
           </motion.a>
           <motion.a
             href={testimonial.twitter}
@@ -226,7 +226,7 @@ export default function TestimonialsSection() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Twitter className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 hover:text-cyan-400 transition-colors" />
+            <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 text-gray-400 hover:text-cyan-400 transition-colors" />
           </motion.a>
         </div>
       </div>
