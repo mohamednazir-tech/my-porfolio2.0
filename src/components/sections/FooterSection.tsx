@@ -303,19 +303,19 @@ const footerLinks = [
 
             <div className="flex gap-4 md:gap-6">
               <a
-                href="/privacy"
+                href="#/privacy"
                 className="text-gray-500 hover:text-cyan-400 transition-colors text-[10px] md:text-xs"
               >
                 Privacy
               </a>
               <a
-                href="/terms"
+                href="#/terms"
                 className="text-gray-500 hover:text-cyan-400 transition-colors text-[10px] md:text-xs"
               >
                 Terms
               </a>
               <a
-                href="/sitemap"
+                href="#/sitemap"
                 className="text-gray-500 hover:text-cyan-400 transition-colors text-[10px] md:text-xs"
               >
                 Sitemap

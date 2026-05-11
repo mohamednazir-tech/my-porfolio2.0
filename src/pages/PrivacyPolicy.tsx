@@ -61,7 +61,7 @@ export default function PrivacyPolicy() {
           className="text-center mb-8 md:mb-12"
         >
           <motion.a
-            href="/"
+            href="#/"
             className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 mb-6 md:mb-8 transition-all duration-300 group text-sm md:text-base"
             whileHover={{ x: -5 }}
           >
