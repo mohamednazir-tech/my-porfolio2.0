@@ -11,8 +11,8 @@ const testimonials = [
     content: "Exceptional work! Our new e-commerce platform exceeded all expectations. The attention to detail and innovative solutions transformed our business operations completely.",
     rating: 5,
     project: "3D wesite",
-    phone: "+1234567890",
-    whatsapp: "+1234567890",
+    phone: "+919600551392",
+    whatsapp: "+919600551392",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop"
   },
   {
@@ -22,8 +22,8 @@ const testimonials = [
     content: "The fitness app development was flawless. User engagement increased by 300% within the first month. The app received 5-star ratings across all platforms and stores.",
     rating: 5,
     project: "bussiness/corporate website",
-    phone: "+1234567890",
-    whatsapp: "+1234567890",
+    phone: "+91959787005",
+    whatsapp: "+91959787005",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop"
   },
   {
