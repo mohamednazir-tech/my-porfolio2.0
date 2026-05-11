@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // GitHub Pages deployment config
 export default defineConfig({
   plugins: [react()],
-  base: '/',
+  base: '/my-porfolio2.0/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets'
