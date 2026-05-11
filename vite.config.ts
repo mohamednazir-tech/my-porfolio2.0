@@ -6,13 +6,7 @@ export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/my-porfolio2.0/' : '/',
   build: {
     outDir: 'dist',
-    assetsDir: 'assets',
-    rollupOptions: {
-      input: 'src/main.tsx',
-      output: {
-        manualChunks: undefined
-      }
-    }
+    assetsDir: 'assets'
   },
   server: {
     port: 3000,
