@@ -39,7 +39,7 @@
     <meta name="theme-color" content="#0d4fff" />
     <meta name="msapplication-TileColor" content="#0d4fff" />
     <meta name="msapplication-navbutton-color" content="#0d4fff" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Nazir Portfolio" />
     
@@ -244,7 +244,8 @@
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').then(registration => {
+          const swPath = window.location.pathname.includes('/my-porfolio2.0') ? '/my-porfolio2.0/sw.js' : '/sw.js';
+          navigator.serviceWorker.register(swPath).then(registration => {
             console.log('SW registered: ', registration);
           }).catch(registrationError => {
             console.log('SW registration failed: ', registrationError);
