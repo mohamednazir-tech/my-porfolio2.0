@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mohamednazir-tech.github.io/my-porfolio2.0/sitemap.xml
+
+# Allow search engines to crawl all content
+Allow: /src/
+Allow: /assets/
+Allow: /public/
+
+# Block unnecessary files
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /dist/
+
+# Crawl delay (optional)
+Crawl-delay: 1
