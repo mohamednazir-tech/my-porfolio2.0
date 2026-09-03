@@ -199,7 +199,7 @@ export default function HeroSection() {
             I build
           </span>
           <motion.span
-            className="block gradient-text inline-block min-w-[200px] md:min-w-[300px]"
+            className="block gradient-text min-w-[200px] md:min-w-[300px]"
             animate={{
               opacity: [0.8, 1, 0.8],
             }}

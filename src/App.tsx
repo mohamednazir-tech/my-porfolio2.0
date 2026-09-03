@@ -24,6 +24,7 @@ import FooterSection from './components/sections/FooterSection'
 // Page Components
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
+import logo from "./assets/logo-removebg-preview.png";
 
 // 3D Background Scene
 function Scene3D({ wireframe }: { wireframe: boolean }) {
@@ -52,7 +53,7 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('hero')
   const location = useLocation()
 
-  const isLegalPage = location.hash.includes('privacy') || location.hash.includes('terms')
+  const isLegalPage = location.pathname === '/privacy' || location.pathname === '/terms'
   const isHomePage = !isLegalPage
 
   useEffect(() => {
@@ -60,10 +61,11 @@ export default function App() {
     return () => clearTimeout(timer)
   }, [])
 
+  // Enhanced scroll detection
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['hero', 'services', 'skills', 'projects', 'testimonials', 'contact']
-      const scrollPosition = window.scrollY + 100
+      const scrollPosition = window.scrollY + 150
 
       for (const section of sections) {
         const element = document.getElementById(section)
@@ -78,47 +80,54 @@ export default function App() {
     }
 
     window.addEventListener('scroll', handleScroll)
+    // Initial check
+    setTimeout(handleScroll, 100)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Smooth scroll to section
+  // Improved scroll to section function
   const scrollToSection = (sectionId: string) => {
     console.log('Scrolling to:', sectionId)
     
-    // First, let's test if we can find any sections at all
-    const allSections = document.querySelectorAll('section[id]')
-    console.log('All sections found:', Array.from(allSections).map(s => s.id))
+    // Close mobile menu
+    setIsMenuOpen(false)
     
-    // Try multiple times with delays in case components are still mounting
-    const attemptScroll = (attempts = 0) => {
-      const element = document.getElementById(sectionId)
-      console.log('Attempt', attempts + 1, '- Element found:', element)
+    // Find the element
+    const element = document.getElementById(sectionId)
+    
+    if (element) {
+      console.log('Element found, scrolling...')
       
-      if (element) {
-        console.log('Scrolling to element:', element)
-        console.log('Element position:', element.offsetTop)
-        
-        // Try basic scroll first
-        element.scrollIntoView({ block: 'start' })
-        
-        // Fallback to manual scroll if needed
-        setTimeout(() => {
-          const scrollPosition = element.offsetTop
-          console.log('Manual scroll to position:', scrollPosition)
-          window.scrollTo({
-            top: scrollPosition,
-            behavior: 'smooth'
-          })
-        }, 50)
-      } else if (attempts < 3) {
-        console.log('Retrying in 100ms...')
-        setTimeout(() => attemptScroll(attempts + 1), 100)
-      } else {
-        console.error('Section not found after 3 attempts:', sectionId)
+      // Get the navbar height to offset the scroll
+      const navbar = document.querySelector('nav')
+      const navbarHeight = navbar ? navbar.offsetHeight : 80
+      
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+      
+      // Update URL without causing page reload
+      if (window.history && window.history.pushState) {
+        window.history.pushState(null, '', `#${sectionId}`)
       }
+    } else {
+      console.error('Element not found:', sectionId)
+      
+      // Fallback: try with a delay for dynamic content
+      setTimeout(() => {
+        const retryElement = document.getElementById(sectionId)
+        if (retryElement) {
+          retryElement.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          })
+        }
+      }, 300)
     }
-    
-    attemptScroll()
   }
 
   const navItems = [
@@ -155,91 +164,88 @@ export default function App() {
           transition={{ duration: 0.5 }}
           className="fixed top-0 left-0 right-0 z-50 glass-card border-0 mx-4 mt-4 rounded-2xl"
         >
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <motion.div 
-              className="flex items-center space-x-2"
-              whileHover={{ scale: 1.05 }}
-            >
-              <Sparkles className="w-8 h-8 text-neon-blue" />
-              <span className="text-2xl font-bold gradient-text">Portfolio</span>
-            </motion.div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => (
-                <motion.a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    scrollToSection(item.id)
-                  }}
-                  className={`relative px-4 py-2 rounded-lg transition-all duration-300 ${
-                    activeSection === item.id 
-                      ? 'text-neon-blue' 
-                      : 'text-gray-300 hover:text-white'
-                  }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item.label}
-                  {activeSection === item.id && (
-                    <motion.div
-                      layoutId="activeSection"
-                      className="absolute inset-0 bg-neon-blue/20 rounded-lg -z-10"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                    />
-                  )}
-                </motion.a>
-              ))}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <motion.button
-              className="md:hidden text-white"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </motion.button>
-          </div>
-
-          {/* Mobile Navigation */}
-          <AnimatePresence>
-            {isMenuOpen && (
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <div className="flex justify-between items-center">
               <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="md:hidden mt-4 space-y-2"
+                className="flex items-center space-x-3"
+                whileHover={{ scale: 1.05 }}
               >
+                <img
+                  src={logo}
+                  alt="Nexora Code Logo"
+                  className="w-10 h-10 object-contain"
+                />
+                <span className="text-2xl font-bold gradient-text">
+                  Nexora Code
+                </span>
+              </motion.div>
+
+              {/* Desktop Navigation */}
+              <div className="hidden md:flex items-center space-x-8">
                 {navItems.map((item) => (
-                  <motion.a
+                  <motion.button
                     key={item.id}
-                    href={`#${item.id}`}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      scrollToSection(item.id)
-                      setIsMenuOpen(false)
-                    }}
-                    className={`block px-4 py-2 rounded-lg transition-all duration-300 ${
+                    onClick={() => scrollToSection(item.id)}
+                    className={`relative px-4 py-2 rounded-lg transition-all duration-300 cursor-pointer ${
                       activeSection === item.id 
-                        ? 'text-neon-blue bg-neon-blue/20' 
-                        : 'text-gray-300 hover:text-white hover:bg-white/10'
+                        ? 'text-neon-blue' 
+                        : 'text-gray-300 hover:text-white'
                     }`}
-                    whileHover={{ x: 10 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     {item.label}
-                  </motion.a>
+                    {activeSection === item.id && (
+                      <motion.div
+                        layoutId="activeSection"
+                        className="absolute inset-0 bg-neon-blue/20 rounded-lg -z-10"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                  </motion.button>
                 ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </motion.nav>
+              </div>
+
+              {/* Mobile Menu Button */}
+              <motion.button
+                className="md:hidden text-white"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </motion.button>
+            </div>
+
+            {/* Mobile Navigation */}
+            <AnimatePresence>
+              {isMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="md:hidden mt-4 space-y-2"
+                >
+                  {navItems.map((item) => (
+                    <motion.button
+                      key={item.id}
+                      onClick={() => scrollToSection(item.id)}
+                      className={`block w-full text-left px-4 py-2 rounded-lg transition-all duration-300 ${
+                        activeSection === item.id 
+                          ? 'text-neon-blue bg-neon-blue/20' 
+                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      }`}
+                      whileHover={{ x: 10 }}
+                    >
+                      {item.label}
+                    </motion.button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </motion.nav>
       )}
 
       {/* Main Content */}
@@ -247,12 +253,25 @@ export default function App() {
         <Routes>
           <Route path="/" element={
             <>
-              <HeroSection />
-              <ServicesSection />
-              <SkillsSection />
-              <ProjectsSection />
-              <TestimonialsSection />
-              <ContactSection />
+              {/* Ensure each section has the correct ID */}
+              <section id="hero">
+                <HeroSection />
+              </section>
+              <section id="services">
+                <ServicesSection />
+              </section>
+              <section id="skills">
+                <SkillsSection />
+              </section>
+              <section id="projects">
+                <ProjectsSection />
+              </section>
+              <section id="testimonials">
+                <TestimonialsSection />
+              </section>
+              <section id="contact">
+                <ContactSection />
+              </section>
             </>
           } />
           <Route path="/privacy" element={<PrivacyPolicy />} />
@@ -271,26 +290,28 @@ export default function App() {
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 1, duration: 0.5 }}
         >
-        <div className="flex flex-col space-y-4">
-          {[
-            { icon: Github, href: '#', label: 'GitHub' },
-            { icon: Linkedin, href: 'https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android', label: 'LinkedIn' },
-            { icon: Mail, href: 'mailto:mohamednazirm686@gmail.com', label: 'Email' },
-          ].map((social, index) => (
-            <motion.a
-              key={social.label}
-              href={social.href}
-              className="w-12 h-12 glass-card flex items-center justify-center rounded-full hover:scale-110 transition-transform duration-300"
-              whileHover={{ rotate: 360, scale: 1.2 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
-            >
-              <social.icon className="w-5 h-5 text-neon-blue" />
-            </motion.a>
-          ))}
-        </div>
-      </motion.div>
+          <div className="flex flex-col space-y-4">
+            {[
+              { icon: Github, href: '#', label: 'GitHub' },
+              { icon: Linkedin, href: 'https://www.linkedin.com/in/nazir2003?utm_source=share_via&utm_content=profile&utm_medium=member_android', label: 'LinkedIn' },
+              { icon: Mail, href: 'mailto:mohamednazirm686@gmail.com', label: 'Email' },
+            ].map((social, index) => (
+              <motion.a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 glass-card flex items-center justify-center rounded-full hover:scale-110 transition-transform duration-300"
+                whileHover={{ rotate: 360, scale: 1.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
+              >
+                <social.icon className="w-5 h-5 text-neon-blue" />
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
       )}
     </div>
   )

@@ -561,9 +561,9 @@ export default function SkillsSection() {
           className="mt-12 md:mt-16 grid grid-cols-2 md:flex md:justify-center gap-4 md:gap-8 px-4"
         >
           {[
-            // { label: "Projects Completed", value: "50+", icon: Code },
-            // { label: "Happy Clients", value: "40+", icon: Flame },
-            // { label: "Years Experience", value: "5+", icon: Sparkles },
+            { label: "Projects Completed", value: "50+", icon: Code },
+            { label: "Happy Clients", value: "40+", icon: Flame },
+            { label: "Years Experience", value: "5+", icon: Sparkles },
           ].map((stat, i) => (
             <motion.div
               key={i}

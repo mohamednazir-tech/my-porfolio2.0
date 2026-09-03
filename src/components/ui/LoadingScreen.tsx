@@ -155,7 +155,7 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Loading Portfolio
+            Loading ...
           </motion.h1>
 
           {/* Loading Message */}

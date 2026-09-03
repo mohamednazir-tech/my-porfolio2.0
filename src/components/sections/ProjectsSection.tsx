@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer'
 import { ExternalLink, Github, Smartphone, Monitor, Globe, ArrowRight, Star, Filter } from 'lucide-react'
 
 // Vite import meta for base URL
-const BASE_URL = import.meta.env.BASE_URL || ''
+const BASE_URL = (import.meta as any).env?.BASE_URL || ''
 
 const projects = [
   {
